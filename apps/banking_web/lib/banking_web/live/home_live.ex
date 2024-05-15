@@ -247,13 +247,7 @@ defmodule BankingWeb.HomeLive do
       assign(socket,
         loading: true,
         secret_wordle_answered: false,
-        secret_wordle: %{
-          first: %{letter: "", match: nil},
-          second: %{letter: "", match: nil},
-          third: %{letter: "", match: nil},
-          forth: %{letter: "", match: nil},
-          fifth: %{letter: "", match: nil}
-        }
+        secret_wordle: @init_secret_wordle
       )
 
     {:noreply, socket}
