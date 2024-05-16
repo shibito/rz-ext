@@ -7,13 +7,17 @@ defmodule BankingWeb.Application do
 
   @impl true
   def start(_type, _args) do
+    topologies = Application.get_env(:libcluster, :topologies) || []
+
     children = [
       {Phoenix.PubSub, name: BankingWeb.PubSub},
       BankingWeb.Telemetry,
+      # {DNSCluster, query: Application.get_env(:banking_web, :dns_cluster_query) || :ignore},
       # Start a worker by calling: BankingWeb.Worker.start_link(arg)
       # {BankingWeb.Worker, arg},
       # Start to serve requests, typically the last entry
-      BankingWeb.Endpoint
+      BankingWeb.Endpoint,
+      {Cluster.Supervisor, [topologies, [name: BankingWeb.ClusterSupervisor]]}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

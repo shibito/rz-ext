@@ -6,5 +6,5 @@ import Config
 # which you should run after static files are built and
 # before starting your production server.
 config :banking_web, BankingWeb.Endpoint,
-  url: [host: "example.com", port: 80],
+  url: [host: "banking-web.fly.dev", port: 8080],
   cache_static_manifest: "priv/static/cache_manifest.json"

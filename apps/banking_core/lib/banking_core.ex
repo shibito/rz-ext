@@ -20,6 +20,7 @@ defmodule BankingCore do
   @accounts_endpoint "https://exam.razoyo.com/api/banking/accounts"
   @operation_endpoint "https://exam.razoyo.com/api/banking/operations"
   @client_secret "qRIAKP5ywR5i6sGcv3dFbYDEKoUmV5V5"
+  # @client_secret System.get_env("CLIENT_SECRET")
 
   def refresh_token do
     http_client(

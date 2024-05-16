@@ -57,6 +57,8 @@ defmodule BankingWeb.MixProject do
       {:gettext, "~> 0.20"},
       {:jason, "~> 1.2"},
       {:bandit, "~> 1.2"},
+      {:libcluster, "~> 3.3"},
+      {:dns_cluster, "~> 0.1.1"},
       {:banking_core, in_umbrella: true}
     ]
   end

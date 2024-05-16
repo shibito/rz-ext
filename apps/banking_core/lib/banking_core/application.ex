@@ -7,9 +7,12 @@ defmodule BankingCore.Application do
 
   @impl true
   def start(_type, _args) do
+    topologies = Application.get_env(:libcluster, :topologies) || []
+
     children = [
       # Starts a worker by calling: BankingCore.Worker.start_link(arg)
       # {BankingCore.Worker, arg}
+      {Cluster.Supervisor, [topologies, [name: BankingCore.ClusterSupervisor]]}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
